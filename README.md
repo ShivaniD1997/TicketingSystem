@@ -1,94 +1,73 @@
-🎫 Ticketing System API
-📌 Overview
-The Ticketing System is a role-based backend application built using ASP.NET Core Web API. It helps teams manage tickets, assign tasks and generate reports efficiently.
+🎫 TICKETING SYSTEM API
+📌 OVERVIEW
 
-🚀 Features
+The Ticketing System is a role-based backend application built using ASP.NET Core Web API. It helps teams manage tickets, assign tasks, and generate reports efficiently.
+
+🚀 FEATURES
 🔐 JWT Authentication & Authorization
-
 👥 Role-Based Access Control (Admin, PM, TL, Dev, QA)
-
 🎫 Ticket Management (Create, Assign, Update)
-
 📊 Excel Report Generation (ClosedXML)
-
 🧾 Clean Architecture (Layered Structure)
-
 ⚡ Async/Await Implementation
-
-🏗️ Project Structure
+🏗️ PROJECT STRUCTURE
 TicketingSystem
 │
 ├── TicketingSystem.API            # Controllers (Presentation Layer)
 ├── TicketingSystem.Application    # Services, DTOs (Business Logic)
 ├── TicketingSystem.Domain         # Entities, Enums
 ├── TicketingSystem.Infrastructure # DB Context, Repositories
-🔐 Authentication & Authorization
+🔐 AUTHENTICATION & AUTHORIZATION
 Uses JWT Token for secure authentication
 
-Role-based access using [Authorize(Roles = "...")]
+Role-based access using:
 
-👥 Roles
+[Authorize(Roles = "...")]
+👥 ROLES
 Admin
-
 ProjectManager
-
 TeamLead
-
 Developer
-
 QA
+🔄 TICKET WORKFLOW
 
-🔄 Ticket Workflow
 Created → Assigned → In Progress → Resolved → Closed
-📡 API Endpoints
-🔐 Auth APIs
+
+📡 API ENDPOINTS
+🔐 AUTH APIs
 Method	Endpoint	Access
 POST	/api/auth/register	Public
 POST	/api/auth/login	Public
-
-🎫 Ticket APIs
-Method	Endpoint	Access     Role
-POST	/api/tickets	Admin, PM
-GET	/api/tickets	Admin, PM, TL
-GET	/api/tickets/{id}	All (based on access)
-PUT	/api/tickets/{id}	Admin, PM, TL
-
-🔄 Workflow APIs
-Method	Endpoint	Access                        Role
-PUT	/api/tickets/{id}/assign	Admin, PM, TL
-PUT	/api/tickets/{id}/status	All Roles
-
-📊 Report API
-Method	Endpoint	Access     Role
-GET	/api/reports/export	Admin, PM
-🗄️ Database Schema (Simplified)
-👤 Users
+🎫 TICKET APIs
+Method	Endpoint	Access	Role
+POST	/api/tickets	Admin, PM	Admin, PM
+GET	/api/tickets	Admin, PM, TL	Admin, PM, TL
+GET	/api/tickets/{id}	All (based access)	All
+PUT	/api/tickets/{id}	Admin, PM, TL	Admin, PM, TL
+🔄 WORKFLOW APIs
+Method	Endpoint	Access	Role
+PUT	/api/tickets/{id}/assign	Admin, PM, TL	Admin, PM, TL
+PUT	/api/tickets/{id}/status	All	All Roles
+📊 REPORT API
+Method	Endpoint	Access	Role
+GET	/api/reports/export	Admin, PM	Admin, PM
+🗄️ DATABASE SCHEMA (SIMPLIFIED)
+👤 USERS
 Id (Guid)
-
 Email
-
 Password
-
 Role
-
-🎫 Tickets
+🎫 TICKETS
 Id (Guid)
-
 Title
-
 Description
-
 Status (Enum)
-
 Priority (Enum)
-
 AssignedToUserId (Guid)
-
 CreatedBy (Guid)
-
 CreatedDate (DateTime)
+⚙️ CONFIGURATION
 
-⚙️ Configuration
 Update appsettings.json:
 
 {
@@ -106,8 +85,22 @@ Update appsettings.json:
     "Password": "your_app_password"
   }
 }
+🔥 PRO TIP (VERY IMPORTANT)
 
-▶️ How to Run
+Before pushing code to GitHub:
+
+❌ Do NOT commit real passwords
+✅ Always use placeholders like:
+
+"your_secret_key"
+"your_email"
+"your_app_password"
+
+👉 For real credentials, use:
+
+User Secrets (local)
+Environment Variables (production)
+▶️ HOW TO RUN
 # Clone repository
 
 # Navigate to project
@@ -119,33 +112,11 @@ dotnet ef database update
 
 # Run project
 dotnet run
-
-📊 Report Feature
+📊 REPORT FEATURE
 Export tickets to Excel
-
 Built using ClosedXML
-
-Includes ticket details, status, priority, and dates
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Includes:
+Ticket details
+Status
+Priority
+Dates
